@@ -62,8 +62,6 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm g`\"
 " ================================= Plugins ========================================
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'          "Toggle nerd tree with one key
 Plug 'tpope/vim-commentary'             "Trigger: gc
 Plug 'jiangmiao/auto-pairs'             "Auto pair for ',), }, ]...
 Plug 'airblade/vim-gitgutter'           "Show git status in vim
@@ -73,21 +71,19 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " development dependent plugins
 Plug 'wakatime/vim-wakatime'            "check coding time
-Plug 'hsanson/vim-android'
 
 call plug#end()
 
 " ================================= Plugin settings ==================================
-" ----- Nerd Tree -----
-map nt <ESC>:NERDTree<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$']    "ignore files in NERDTree
-
 " ----- NeoSolarized -----
 colorscheme NeoSolarized
 set termguicolors
 set background=dark
 
 " ----- CoC -----
+" Add coc plugins
+let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-tsserver', 'coc-json', 'coc-texlab', 'coc-metals', 'coc-vetur', 'coc-pyright']
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -135,11 +131,6 @@ endif
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
