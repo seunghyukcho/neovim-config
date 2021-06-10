@@ -29,9 +29,9 @@
       "args" : ["up", "--method", "stdio"],
       "filetypes": ["sql", "mysql"]
     },
-    "ocaml": {
-      "command": "ocaml-language-server",
-      "args": ["--stdio"],
+    "ocaml-lsp": {
+      "command": "opam",
+      "args": ["config", "exec", "--", "ocamllsp"],
       "filetypes": ["ocaml", "reason"]
     }
   }
