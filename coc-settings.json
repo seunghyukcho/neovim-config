@@ -34,5 +34,6 @@
       "args": ["config", "exec", "--", "ocamllsp"],
       "filetypes": ["ocaml", "reason"]
     }
-  }
+  },
+  "python.pythonPath": "~/.config/nvim/pyright-set.sh"
 }
