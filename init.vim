@@ -71,6 +71,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " development dependent plugins
 Plug 'wakatime/vim-wakatime'            "check coding time
+Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
 
@@ -82,7 +83,9 @@ set background=dark
 
 " ----- CoC -----
 " Add coc plugins
-let g:coc_global_extensions = ['coc-css', 'coc-html', 'coc-tsserver', 'coc-json', 'coc-texlab', 'coc-metals', 'coc-vetur', 'coc-pyright']
+let g:coc_global_extensions = ['coc-vetur', 'coc-pyright', 'coc-julia']
+
+autocmd BufRead,BufNewFile *.jl :set filetype=julia
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -106,13 +109,6 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
