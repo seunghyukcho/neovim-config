@@ -66,20 +66,23 @@ Plug 'tpope/vim-commentary'             "Trigger: gc
 Plug 'jiangmiao/auto-pairs'             "Auto pair for ',), }, ]...
 Plug 'airblade/vim-gitgutter'           "Show git status in vim
 Plug 'mhinz/vim-startify'               "fancy start page for empty vim
-Plug 'iCyMind/NeoSolarized'
+Plug 'overcache/NeoSolarized'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " development dependent plugins
-Plug 'wakatime/vim-wakatime'            "check coding time
-Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
 
 " ================================= Plugin settings ==================================
 " ----- NeoSolarized -----
-colorscheme NeoSolarized
 set termguicolors
 set background=dark
+set t_8f=<C-Esc>[38;2;%lu;%lu;%lum
+set t_8b=<C-Esc>[48;2;%lu;%lu;%lum
+colorscheme NeoSolarized
 
 " ----- CoC -----
 " Add coc plugins
