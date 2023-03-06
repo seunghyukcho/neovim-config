@@ -40,3 +40,5 @@ set fillchars+=vert:\│          "Make vertical split separator full line
 silent !mkdir $HOME/.config/nvim/backups > /dev/null 2>&1
 set undodir=$HOME/.config/nvim/backups
 set undofile
+
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm g`\"" | endif   "Restore cursor last position
