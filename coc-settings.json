@@ -14,6 +14,5 @@
   ],
   "codeLens.enable": true,
   "yaml.format.enable": true,
-  "python.pythonPath": "~/.config/nvim/pyright-set.sh",
-  "python.jediEnabled": false
+  "python.linting.pylintEnabled": true
 }

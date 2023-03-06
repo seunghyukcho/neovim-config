@@ -1,9 +1,9 @@
 "4stack neovim setting
 "Author: seunghyukcho, shhj1998@postech.ac.kr
 
-source ./general/settings.vim
+source $HOME/.config/nvim/general/settings.vim
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('$HOME/.config/nvim/plugins')
   Plug 'tpope/vim-commentary'             "Trigger: gc
   Plug 'jiangmiao/auto-pairs'             "Auto pair for ',), }, ]...
   Plug 'airblade/vim-gitgutter'           "Show git status in vim
@@ -16,6 +16,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
-source ./neosolarized/neosolarized.vim
-source ./coc/coc.vim
-source ./coc/extensions.vim
+source $HOME/.config/nvim/neosolarized/neosolarized.vim
+source $HOME/.config/nvim/coc/coc.vim
+source $HOME/.config/nvim/coc/extensions.vim

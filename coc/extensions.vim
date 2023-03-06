@@ -3,5 +3,4 @@ let g:coc_global_extensions = [
       \ 'coc-sh',
       \ 'coc-yaml',
       \ 'coc-pyright',
-      \ 
-]
+      \ ]
