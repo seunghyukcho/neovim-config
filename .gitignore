@@ -1,0 +1,16 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+
+lua/lazy-lock.json
+site/pack/*      # precompiled plugins
+*.swap
+*.zip
+
+.DS_Store
+backups/
