@@ -1,15 +1,46 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    cmd = "Copilot", -- :Copilot 호출 때만 로드
-    build = ":Copilot auth", -- 설치 뒤 자동 인증 창 띄우기
-    event = "InsertEnter", -- 글 입력 시작 시 백그라운드 로드
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    event = "BufReadPost",
     opts = {
       suggestion = {
-        auto_trigger = true, -- 입력하면 바로 제안
-        keymap = { accept = "<Tab>" }, -- 탭으로 수락
+        enabled = true,
+        auto_trigger = true,
+        hide_during_completion = false,
+        keymap = {
+          accept = false, -- handled by nvim-cmp / blink.cmp
+        },
       },
-      panel = { enabled = false }, -- 패널 off → 경량
+      panel = { enabled = false },
+      filetypes = {
+        yaml = true,
+        markdown = true,
+        gitcommit = true,
+        gitrebase = true,
+        hgcommit = true,
+        help = false,
+        text = false,
+        python = true,
+        javascript = true,
+        typescript = true,
+        ["*"] = true, -- enable for all other filetypes
+      },
     },
+    config = function(_, opts)
+      local copilot = require("copilot")
+      copilot.setup(opts)
+
+      vim.keymap.set("i", "<Tab>", function()
+        local suggestion = require("copilot.suggestion")
+        if suggestion.is_visible() then
+          suggestion.accept() -- Copilot 제안이 있으면 바로 수락
+        else
+          -- Copilot 제안이 없으면 원래 <Tab> 기능 수행
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+        end
+      end, { silent = true })
+    end,
   },
 }
